@@ -17,4 +17,8 @@ io.on('connection', function(socket){
     socket.on('chat', function(data) {
         io.sockets.emit('chat', data); // server sends the message to all the clients connected
     });
+
+    socket.on('typingMessage', function(data) {
+        socket.broadcast.emit('typingMessage', data); // server sends a message to all the clients except the sender
+    });
 });
